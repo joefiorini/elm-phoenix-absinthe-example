@@ -44,7 +44,7 @@ defmodule TodoAppWeb.Endpoint do
     signing_salt: "Uctl5y+S"
   )
 
-  plug(Corsica, origins: "*")
+  plug(Corsica, origins: "*", allow_headers: ["content-type"])
 
   plug(Absinthe.Plug, schema: TodoAppWeb.Schema)
 

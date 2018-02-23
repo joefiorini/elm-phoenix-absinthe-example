@@ -5,10 +5,10 @@ defmodule TodoAppWeb.Schema do
 
   @desc "A task in the todo system"
   object :task do
-    field(:id, :id)
-    field(:name, :string)
+    field(:id, non_null(:id))
+    field(:name, non_null(:string))
     field(:description, :string)
-    field(:is_completed, :boolean)
+    field(:is_completed, non_null(:boolean))
   end
 
   #   # Example data
@@ -18,7 +18,7 @@ defmodule TodoAppWeb.Schema do
   #   }
 
   query do
-    field :tasks, list_of(:task) do
+    field :tasks, non_null(list_of(non_null(:task))) do
       resolve(fn _, _ ->
         {:ok, Task |> TodoApp.Repo.all()}
       end)
